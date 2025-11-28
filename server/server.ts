@@ -11,6 +11,7 @@ import housekeepingRoutes from './routes/housekeepingRoutes';
 import analyticsRoutes from './routes/analyticsRoutes';
 import userRoutes from './routes/userRoutes';
 import { connectDB } from './config/database';
+// import contactRoutes = './routes/routes';
 import cors from 'cors';
 
 // Load environment variables
@@ -28,7 +29,7 @@ const port = process.env.PORT || 3000;
 app.enable('json spaces');
 // We want to be consistent with URL paths, so we enable strict routing
 app.enable('strict routing');
-
+// app.use('/api', contactRoutes);
 app.use(cors({}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
