@@ -112,6 +112,53 @@ class UserService {
       throw new Error(`Database error while setting user password: ${err}`);
     }
   }
+
+  static async getUsers(query: any, skip: number, limit: number): Promise<IUser[]> {
+    try {
+      return await User.find(query)
+        .select('-password -refreshToken')
+        .skip(skip)
+        .limit(limit)
+        .sort({ createdAt: -1 })
+        .exec();
+    } catch (err) {
+      throw new Error(`Database error while getting users: ${err}`);
+    }
+  }
+
+  static async countUsers(query: any): Promise<number> {
+    try {
+      return await User.countDocuments(query).exec();
+    } catch (err) {
+      throw new Error(`Database error while counting users: ${err}`);
+    }
+  }
+
+  static async getUserById(id: string): Promise<IUser | null> {
+    try {
+      return await User.findById(id).select('-password -refreshToken').exec();
+    } catch (err) {
+      throw new Error(`Database error while getting user by ID: ${err}`);
+    }
+  }
+
+  static async updateUser(id: string, updates: Partial<IUser>): Promise<IUser | null> {
+    try {
+      return await User.findByIdAndUpdate(id, updates, { new: true })
+        .select('-password -refreshToken')
+        .exec();
+    } catch (err) {
+      throw new Error(`Database error while updating user: ${err}`);
+    }
+  }
+
+  static async deleteUser(id: string): Promise<void> {
+    try {
+      await User.findByIdAndDelete(id).exec();
+    } catch (err) {
+      throw new Error(`Database error while deleting user: ${err}`);
+    }
+  }
 }
 
 export default UserService;

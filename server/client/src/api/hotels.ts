@@ -1,6 +1,5 @@
 import api from './api';
 import { Hotel } from '@/types/hotel';
-import { transformHotel, transformHotelArray } from '@/lib/api-transform';
 
 interface HotelFilters {
   location?: string;
@@ -32,10 +31,7 @@ export const getHotels = async (filters?: HotelFilters): Promise<HotelsResponse>
     if (filters?.roomType) params.type = filters.roomType;
 
     const response = await api.get('/api/hotels', { params });
-    return {
-      ...response.data,
-      hotels: transformHotelArray(response.data.hotels),
-    };
+    return response.data;
   } catch (error: any) {
     console.error(error);
     throw new Error(error?.response?.data?.error || error.message);
@@ -53,7 +49,7 @@ interface HotelResponse {
 export const getHotelById = async (id: string): Promise<Hotel> => {
   try {
     const response = await api.get(`/api/hotels/${id}`);
-    return transformHotel(response.data);
+    return response.data;
   } catch (error: any) {
     console.error(error);
     throw new Error(error?.response?.data?.error || error.message);
@@ -67,7 +63,7 @@ export const getHotelById = async (id: string): Promise<Hotel> => {
 export const createHotel = async (hotelData: Partial<Hotel>) => {
   try {
     const response = await api.post('/api/hotels', hotelData);
-    return transformHotel(response.data);
+    return response.data;
   } catch (error: any) {
     console.error(error);
     throw new Error(error?.response?.data?.error || error.message);
@@ -81,7 +77,7 @@ export const createHotel = async (hotelData: Partial<Hotel>) => {
 export const updateHotel = async (id: string, hotelData: Partial<Hotel>) => {
   try {
     const response = await api.put(`/api/hotels/${id}`, hotelData);
-    return transformHotel(response.data);
+    return response.data;
   } catch (error: any) {
     console.error(error);
     throw new Error(error?.response?.data?.error || error.message);
@@ -109,9 +105,7 @@ export const deleteHotel = async (id: string) => {
 export const getHotelsByOwner = async () => {
   try {
     const response = await api.get('/api/hotels/owner/me');
-    return {
-      hotels: transformHotelArray(response.data.hotels),
-    };
+    return response.data;
   } catch (error: any) {
     console.error(error);
     throw new Error(error?.response?.data?.error || error.message);
