@@ -1,11 +1,39 @@
 import api from './api';
 import { User } from 'shared/types/user';
 
+interface UserParams {
+  role?: string;
+  status?: string;
+  search?: string;
+  page?: number;
+  limit?: number;
+}
+
+interface UsersResponse {
+  users: User[];
+  total: number;
+  page: number;
+  totalPages: number;
+}
+
+interface UserResponse {
+  user: User;
+}
+
+interface UserMessageResponse {
+  user: User;
+  message: string;
+}
+
+interface MessageResponse {
+  message: string;
+}
+
 // Description: Get all users (admin)
 // Endpoint: GET /api/users
 // Request: { role?: string, status?: string, search?: string, page?: number, limit?: number }
 // Response: { users: User[], total: number, page: number, totalPages: number }
-export const getAllUsers = async (params?: any) => {
+export const getAllUsers = async (params?: UserParams): Promise<UsersResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {

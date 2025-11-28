@@ -1,11 +1,40 @@
 import api from './api';
 import { Booking } from '@/types/hotel';
 
+interface QueryParams {
+  [key: string]: string | number | undefined;
+}
+
+interface CreateBookingResponse {
+  booking: Booking;
+  message: string;
+}
+
+interface GetBookingsResponse {
+  bookings: Booking[];
+}
+
+interface GetAllBookingsResponse {
+  bookings: Booking[];
+  total: number;
+  page: number;
+  totalPages: number;
+}
+
+interface BookingResponse {
+  booking: Booking;
+}
+
+interface CancelBookingResponse {
+  booking: Partial<Booking>;
+  message: string;
+}
+
 // Description: Create new booking
 // Endpoint: POST /api/bookings
 // Request: { booking: Partial<Booking> }
 // Response: { booking: Booking, message: string }
-export const createBooking = async (bookingData: Partial<Booking>) => {
+export const createBooking = async (bookingData: Partial<Booking>): Promise<CreateBookingResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -36,7 +65,7 @@ export const createBooking = async (bookingData: Partial<Booking>) => {
 // Endpoint: GET /api/bookings/user/:userId
 // Request: { status?: string }
 // Response: { bookings: Booking[] }
-export const getBookingsByUser = async (userId: string, params?: any) => {
+export const getBookingsByUser = async (userId: string, params?: QueryParams): Promise<GetBookingsResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -102,7 +131,7 @@ export const getBookingsByUser = async (userId: string, params?: any) => {
 // Endpoint: GET /api/bookings/:id
 // Request: {}
 // Response: { booking: Booking }
-export const getBookingById = async (id: string) => {
+export const getBookingById = async (id: string): Promise<BookingResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -145,7 +174,7 @@ export const getBookingById = async (id: string) => {
 // Endpoint: PUT /api/bookings/:id/cancel
 // Request: { reason: string }
 // Response: { booking: Booking, message: string }
-export const cancelBooking = async (id: string, reason: string) => {
+export const cancelBooking = async (id: string, reason: string): Promise<CancelBookingResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -172,7 +201,7 @@ export const cancelBooking = async (id: string, reason: string) => {
 // Endpoint: GET /api/bookings/hotel/:hotelId
 // Request: { status?: string, startDate?: string, endDate?: string }
 // Response: { bookings: Booking[] }
-export const getBookingsByHotel = async (hotelId: string, params?: any) => {
+export const getBookingsByHotel = async (hotelId: string, params?: QueryParams): Promise<GetBookingsResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -216,7 +245,7 @@ export const getBookingsByHotel = async (hotelId: string, params?: any) => {
 // Endpoint: GET /api/bookings
 // Request: { status?: string, hotelId?: string, startDate?: string, endDate?: string, page?: number, limit?: number }
 // Response: { bookings: Booking[], total: number, page: number, totalPages: number }
-export const getAllBookings = async (params?: any) => {
+export const getAllBookings = async (params?: QueryParams): Promise<GetAllBookingsResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {

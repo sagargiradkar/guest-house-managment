@@ -1,11 +1,27 @@
 import api from './api';
 import { Hotel } from '@/types/hotel';
 
+interface HotelFilters {
+  location?: string;
+  checkIn?: string;
+  checkOut?: string;
+  guests?: number;
+  minPrice?: number;
+  maxPrice?: number;
+  amenities?: string[];
+  roomType?: string;
+}
+
+interface HotelsResponse {
+  hotels: Hotel[];
+  total: number;
+}
+
 // Description: Get list of hotels with filters
 // Endpoint: GET /api/hotels
 // Request: { location?: string, checkIn?: string, checkOut?: string, guests?: number, minPrice?: number, maxPrice?: number, amenities?: string[], roomType?: string }
 // Response: { hotels: Hotel[], total: number }
-export const getHotels = async (filters?: any) => {
+export const getHotels = async (filters?: HotelFilters): Promise<HotelsResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -131,11 +147,15 @@ export const getHotels = async (filters?: any) => {
   // }
 };
 
+interface HotelResponse {
+  hotel: Hotel;
+}
+
 // Description: Get hotel by ID
 // Endpoint: GET /api/hotels/:id
 // Request: {}
 // Response: { hotel: Hotel }
-export const getHotelById = async (id: string) => {
+export const getHotelById = async (id: string): Promise<HotelResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {

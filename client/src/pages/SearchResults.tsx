@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchBar, SearchParams } from '@/components/SearchBar';
 import { HotelCard } from '@/components/HotelCard';
@@ -39,17 +39,13 @@ export function SearchResults() {
   const [minRating, setMinRating] = useState(0);
   const [sortBy, setSortBy] = useState('popularity');
 
-  useEffect(() => {
-    loadHotels();
-  }, [searchParams]);
-
-  const loadHotels = async () => {
+  const loadHotels = useCallback(async () => {
     try {
       console.log('Loading hotels with params:', searchParams);
       setLoading(true);
-      const response: any = await getHotels(searchParams);
+      const response = await getHotels(searchParams);
       setHotels(response.hotels);
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error loading hotels:', error);
       toast({
         title: 'Error',
@@ -59,7 +55,11 @@ export function SearchResults() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [searchParams, toast]);
+
+  useEffect(() => {
+    loadHotels();
+  }, [loadHotels]);
 
   const handleSearch = (params: SearchParams) => {
     console.log('New search params:', params);

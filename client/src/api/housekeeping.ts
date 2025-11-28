@@ -1,11 +1,34 @@
 import api from './api';
 import { HousekeepingTask, RoomStatus } from '@/types/housekeeping';
 
+interface TaskParams {
+  status?: string;
+  priority?: string;
+}
+
+interface RoomStatusResponse {
+  roomStatuses: RoomStatus[];
+}
+
+interface TasksResponse {
+  tasks: HousekeepingTask[];
+}
+
+interface TaskResponse {
+  task: HousekeepingTask;
+  message: string;
+}
+
+interface RoomStatusUpdateResponse {
+  roomStatus: RoomStatus;
+  message: string;
+}
+
 // Description: Get room statuses by hotel
 // Endpoint: GET /api/housekeeping/hotel/:hotelId/status
 // Request: {}
 // Response: { roomStatuses: RoomStatus[] }
-export const getRoomStatusesByHotel = async (hotelId: string) => {
+export const getRoomStatusesByHotel = async (hotelId: string): Promise<RoomStatusResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -64,7 +87,7 @@ export const getRoomStatusesByHotel = async (hotelId: string) => {
 // Endpoint: GET /api/housekeeping/hotel/:hotelId/tasks
 // Request: { status?: string, priority?: string }
 // Response: { tasks: HousekeepingTask[] }
-export const getHousekeepingTasks = async (hotelId: string, params?: any) => {
+export const getHousekeepingTasks = async (hotelId: string, params?: TaskParams): Promise<TasksResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {

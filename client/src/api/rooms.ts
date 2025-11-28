@@ -1,11 +1,33 @@
 import api from './api';
 import { Room } from '@/types/hotel';
 
+interface RoomParams {
+  checkIn?: string;
+  checkOut?: string;
+}
+
+interface RoomsResponse {
+  rooms: Room[];
+}
+
+interface RoomResponse {
+  room: Room;
+}
+
+interface RoomMessageResponse {
+  room: Room;
+  message: string;
+}
+
+interface MessageResponse {
+  message: string;
+}
+
 // Description: Get rooms by hotel ID
 // Endpoint: GET /api/rooms/hotel/:hotelId
 // Request: { checkIn?: string, checkOut?: string }
 // Response: { rooms: Room[] }
-export const getRoomsByHotel = async (hotelId: string, params?: any) => {
+export const getRoomsByHotel = async (hotelId: string, params?: RoomParams): Promise<RoomsResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {

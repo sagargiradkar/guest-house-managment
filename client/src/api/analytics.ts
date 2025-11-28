@@ -1,10 +1,20 @@
 import api from './api';
 
+interface AnalyticsParams {
+  startDate?: string;
+  endDate?: string;
+  hotelId?: string;
+}
+
+interface OwnerAnalyticsResponse {
+  analytics: Record<string, unknown>;
+}
+
 // Description: Get owner analytics
 // Endpoint: GET /api/analytics/owner/:ownerId
 // Request: { startDate?: string, endDate?: string, hotelId?: string }
 // Response: { analytics: object }
-export const getOwnerAnalytics = async (ownerId: string, params?: any) => {
+export const getOwnerAnalytics = async (ownerId: string, params?: AnalyticsParams): Promise<OwnerAnalyticsResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -56,11 +66,15 @@ export const getOwnerAnalytics = async (ownerId: string, params?: any) => {
   // }
 };
 
+interface AdminAnalyticsResponse {
+  analytics: Record<string, unknown>;
+}
+
 // Description: Get admin analytics
 // Endpoint: GET /api/analytics/admin
 // Request: { startDate?: string, endDate?: string }
 // Response: { analytics: object }
-export const getAdminAnalytics = async (params?: any) => {
+export const getAdminAnalytics = async (params?: AnalyticsParams): Promise<AdminAnalyticsResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {

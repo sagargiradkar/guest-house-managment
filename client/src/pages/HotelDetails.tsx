@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Hotel, Room } from '@/types/hotel';
 import { Review } from '@/types/hotel';
@@ -29,27 +29,21 @@ export function HotelDetails() {
   const [checkOut, setCheckOut] = useState('');
   const [guests, setGuests] = useState(2);
 
-  useEffect(() => {
-    if (id) {
-      loadHotelData();
-    }
-  }, [id]);
-
-  const loadHotelData = async () => {
+  const loadHotelData = useCallback(async () => {
     try {
       console.log('Loading hotel data for ID:', id);
       setLoading(true);
-      
-      const [hotelResponse, roomsResponse, reviewsResponse]: any = await Promise.all([
+
+      const [hotelResponse, roomsResponse, reviewsResponse] = await Promise.all([
         getHotelById(id!),
         getRoomsByHotel(id!),
         getReviewsByHotel(id!)
       ]);
-      
+
       setHotel(hotelResponse.hotel);
       setRooms(roomsResponse.rooms);
       setReviews(reviewsResponse.reviews);
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error loading hotel data:', error);
       toast({
         title: 'Error',
@@ -59,7 +53,13 @@ export function HotelDetails() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, toast]);
+
+  useEffect(() => {
+    if (id) {
+      loadHotelData();
+    }
+  }, [id, loadHotelData]);
 
   const handleBookRoom = (room: Room) => {
     if (!checkIn || !checkOut) {

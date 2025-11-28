@@ -10,6 +10,7 @@ import { Home } from "./pages/Home"
 import { SearchResults } from "./pages/SearchResults"
 import { HotelDetails } from "./pages/HotelDetails"
 import { BookingPage } from "./pages/BookingPage"
+import { BookingConfirmation } from "./pages/BookingConfirmation"
 import { GuestDashboard } from "./pages/guest/GuestDashboard"
 import { MyBookings } from "./pages/guest/MyBookings"
 import { UserProfile } from "./pages/guest/UserProfile"
@@ -36,19 +37,20 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            
+
             <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
               <Route index element={<Home />} />
               <Route path="search" element={<SearchResults />} />
               <Route path="hotels/:id" element={<HotelDetails />} />
               <Route path="booking" element={<BookingPage />} />
-              
+              <Route path="booking-confirmation" element={<BookingConfirmation />} />
+
               {/* Guest Routes */}
               <Route path="dashboard" element={<GuestDashboard />} />
               <Route path="my-bookings" element={<MyBookings />} />
               <Route path="profile" element={<UserProfile />} />
               <Route path="review/:bookingId" element={<WriteReview />} />
-              
+
               {/* Owner Routes */}
               <Route path="owner/dashboard" element={<OwnerDashboard />} />
               <Route path="owner/hotels" element={<MyHotels />} />
@@ -59,7 +61,7 @@ function App() {
               <Route path="owner/hotels/:hotelId/rooms/:roomId/edit" element={<RoomForm />} />
               <Route path="owner/housekeeping" element={<HousekeepingDashboard />} />
               <Route path="owner/analytics" element={<OwnerAnalytics />} />
-              
+
               {/* Admin Routes */}
               <Route path="admin/dashboard" element={<AdminDashboard />} />
               <Route path="admin/bookings" element={<AdminBookings />} />
@@ -67,7 +69,7 @@ function App() {
               <Route path="admin/users" element={<AdminUsers />} />
               <Route path="admin/analytics" element={<AdminAnalytics />} />
             </Route>
-            
+
             <Route path="*" element={<BlankPage />} />
           </Routes>
         </Router>

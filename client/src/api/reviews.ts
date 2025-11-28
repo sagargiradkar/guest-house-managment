@@ -1,11 +1,32 @@
 import api from './api';
 import { Review } from '@/types/hotel';
 
+interface ReviewParams {
+  rating?: number;
+  page?: number;
+  limit?: number;
+}
+
+interface ReviewsResponse {
+  reviews: Review[];
+  total: number;
+  averageRating: number;
+}
+
+interface ReviewResponse {
+  review: Review;
+  message: string;
+}
+
+interface UserReviewsResponse {
+  reviews: Review[];
+}
+
 // Description: Get reviews by hotel
 // Endpoint: GET /api/reviews/hotel/:hotelId
 // Request: { rating?: number, page?: number, limit?: number }
 // Response: { reviews: Review[], total: number, averageRating: number }
-export const getReviewsByHotel = async (hotelId: string, params?: any) => {
+export const getReviewsByHotel = async (hotelId: string, params?: ReviewParams): Promise<ReviewsResponse> => {
   // Mock data
   return new Promise((resolve) => {
     setTimeout(() => {

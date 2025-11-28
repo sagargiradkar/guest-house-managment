@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SearchBar, SearchParams } from '@/components/SearchBar';
 import { HotelCard } from '@/components/HotelCard';
@@ -15,16 +15,12 @@ export function Home() {
   const [featuredHotels, setFeaturedHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadFeaturedHotels();
-  }, []);
-
-  const loadFeaturedHotels = async () => {
+  const loadFeaturedHotels = useCallback(async () => {
     try {
       console.log('Loading featured hotels...');
-      const response: any = await getHotels();
+      const response = await getHotels();
       setFeaturedHotels(response.hotels.slice(0, 6));
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error loading featured hotels:', error);
       toast({
         title: 'Error',
@@ -34,7 +30,11 @@ export function Home() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
+
+  useEffect(() => {
+    loadFeaturedHotels();
+  }, [loadFeaturedHotels]);
 
   const handleSearch = (params: SearchParams) => {
     console.log('Search params:', params);
