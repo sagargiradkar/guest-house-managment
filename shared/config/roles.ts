@@ -1,6 +1,7 @@
 export const ROLES = {
   ADMIN: 'admin',
-  USER: 'user'
+  OWNER: 'owner',
+  GUEST: 'guest'
 } as const;
 
 export const ALL_ROLES: RoleValues[] = Object.values(ROLES);
