@@ -1,4 +1,4 @@
-# Guest House Management Web Application - Product Specification
+# Guest House Management Web Application - Product Specification Document
 
 ## 1. Product Overview
 
