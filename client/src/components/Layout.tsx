@@ -5,11 +5,11 @@ import { Footer } from "./Footer"
 
 export function Layout() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
       <Header />
       
-      {/* Main content - NO container wrapper here */}
-      <main className="flex-1 pt-28">
+      {/* Main content with responsive padding */}
+      <main className="flex-1 pt-16 sm:pt-20 md:pt-24 lg:pt-28 w-full overflow-x-hidden">
         <Outlet />
       </main>
       

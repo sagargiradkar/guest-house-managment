@@ -40,11 +40,11 @@ export function Home() {
       setTimeout(() => setContentLoaded(true), 300);
     } catch (error) {
       console.error('Error loading featured hotels:', error);
-      toast({
-        title: 'Error',
-        description: error.message || 'Failed to load hotels',
-        variant: 'destructive'
-      });
+      // toast({
+      //   title: 'Error',
+      //   description: error.message || 'Failed to load hotels',
+      //   variant: 'destructive'
+      // });
       setContentLoaded(true);
     } finally {
       setLoading(false);

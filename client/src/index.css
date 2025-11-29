@@ -67,3 +67,16 @@
   }
 }
 
+/* Prevent horizontal scroll on all devices */
+html,
+body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* Ensure all images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
