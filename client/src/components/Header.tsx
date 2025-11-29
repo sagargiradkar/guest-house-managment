@@ -162,7 +162,7 @@ export function Header() {
             </nav>
 
             {/* Right Side - Auth Buttons (Desktop) */}
-            <div className="hidden lg:flex items-center gap-3">
+            {/* <div className="hidden lg:flex items-center gap-3">
               {!user ? (
                 <>
                   <Button
@@ -233,7 +233,7 @@ export function Header() {
                   </DropdownMenuContent>
                 </DropdownMenu>
               )}
-            </div>
+            </div> */}
 
             {/* Mobile Menu Button */}
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
