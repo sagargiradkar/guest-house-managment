@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Hotel } from '@/types/hotel';
-import { getHotels } from '@/api/hotels';
+// import { getHotels } from '@/api/hotels'; // COMMENTED OUT - Using mock data
+import { MOCK_HOTELS } from '@/lib/mockData'; // ✅ Import mock data
 import { useToast } from '@/hooks/useToast';
 import { 
   Building2, 
@@ -31,25 +32,48 @@ export function Home() {
   const [loading, setLoading] = useState(true);
   const [contentLoaded, setContentLoaded] = useState(false);
 
+  // ✅ Updated to use mock data
   const loadFeaturedHotels = useCallback(async () => {
     try {
-      console.log('Loading featured hotels...');
-      const response = await getHotels();
-      setFeaturedHotels(response.hotels.slice(0, 6));
+      console.log('Loading featured hotels from mock data...');
+      
+      // Simulate API delay for realistic UX
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      // Get top 6 properties (highest rated)
+      const sortedByRating = [...MOCK_HOTELS].sort((a, b) => b.rating - a.rating);
+      setFeaturedHotels(sortedByRating.slice(0, 6));
+      
       // Simulate content loading delay for smooth UX
       setTimeout(() => setContentLoaded(true), 300);
     } catch (error) {
       console.error('Error loading featured hotels:', error);
-      // toast({
-      //   title: 'Error',
-      //   description: error.message || 'Failed to load hotels',
-      //   variant: 'destructive'
-      // });
+      toast({
+        title: 'Error',
+        description: 'Failed to load hotels',
+        variant: 'destructive'
+      });
       setContentLoaded(true);
     } finally {
       setLoading(false);
     }
   }, [toast]);
+
+  /* COMMENTED OUT - Original API call
+  const loadFeaturedHotels = useCallback(async () => {
+    try {
+      console.log('Loading featured hotels...');
+      const response = await getHotels();
+      setFeaturedHotels(response.hotels.slice(0, 6));
+      setTimeout(() => setContentLoaded(true), 300);
+    } catch (error) {
+      console.error('Error loading featured hotels:', error);
+      setContentLoaded(true);
+    } finally {
+      setLoading(false);
+    }
+  }, [toast]);
+  */
 
   useEffect(() => {
     loadFeaturedHotels();
@@ -422,7 +446,7 @@ export function Home() {
             <Button 
               size="lg"
               variant="outline"
-              className="bg-white text-red-600 hover:bg-gray-100 font-semibold px-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+              className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-red-600 font-semibold px-8 shadow-xl transition-all hover:scale-105"
               onClick={() => window.location.href = 'tel:+918788800500'}
             >
               <Phone className="h-5 w-5 mr-2" />
