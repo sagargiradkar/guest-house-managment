@@ -303,7 +303,7 @@ export function Header() {
                   <div className="border-t my-4"></div>
 
                   {/* Mobile Auth Buttons */}
-                  {!user ? (
+                  {/* {!user ? (
                     <div className="space-y-2 px-3">
                       <Button
                         variant="outline"
@@ -393,7 +393,7 @@ export function Header() {
                         Logout
                       </Button>
                     </div>
-                  )}
+                  )} */}
                 </nav>
               </SheetContent>
             </Sheet>
