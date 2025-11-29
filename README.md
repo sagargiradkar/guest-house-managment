@@ -4,13 +4,13 @@
 
 A comprehensive web application for managing guest houses and hotels that allows guests to search, book rooms, and manage their reservations while enabling property owners and administrators to manage their properties, rooms, bookings, and operations efficiently .
 
-## 2. User Roles
+## 2. User Roles 
 
 ### 2.1 Guest (Unauthenticated User)
 
 * Can browse available hotels and rooms
 * Can search and filter properties
-* Must register/login to make bookings on corporate 
+* Must register/login to make bookings on corporate. 
 
 ### 2.2 Guest (Authenticated User) 
 
