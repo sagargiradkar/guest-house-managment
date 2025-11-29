@@ -2,7 +2,7 @@
 
 ## 1. Product Overview
 
-A comprehensive web application for managing guest houses and hotels that allows guests to search, book rooms, and manage their reservations while enabling property owners and administrators to manage their properties, rooms, bookings, and operations efficiently.
+A comprehensive web application for managing guest houses and hotels that allows guests to search, book rooms, and manage their reservations while enabling property owners and administrators to manage their properties, rooms, bookings, and operations efficiently .
 
 ## 2. User Roles
 
@@ -12,7 +12,7 @@ A comprehensive web application for managing guest houses and hotels that allows
 * Can search and filter properties
 * Must register/login to make bookings
 
-### 2.2 Guest (Authenticated User)
+### 2.2 Guest (Authenticated User) 
 
 * All unauthenticated guest capabilities
 * Can make room bookings
