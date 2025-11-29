@@ -43,6 +43,12 @@ import { Pune } from "./pages/locations/Pune";
 import { Mumbai } from "./pages/locations/Mumbai";
 import { Bangalore } from "./pages/locations/Bangalore";
 import { Delhi } from "./pages/locations/Delhi";
+import { ServiceApartments } from "./pages/ServiceApartments";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { TermsOfService } from "./pages/TermsOfService";
+import { CookiePolicy } from "./pages/CookiePolicy";
+import { Sitemap } from "./pages/Sitemap";
+import { PropertyDetails } from '@/pages/PropertyDetails';
 function App() {
 	return (
 		<AuthProvider>
@@ -57,13 +63,25 @@ function App() {
 						<Route path="/" element={<Layout />}>
 							{/* Public Routes */}
 							<Route index element={<Home />} />
-							<Route index path="/about" element={<About />} />
+							<Route path="/about" element={<About />} />
 							<Route
-								index
-								path="/contact"
-								element={<Contact />}
+								path="/privacy-policy"
+								element={<PrivacyPolicy />}
 							/>
+							<Route
+								path="/terms-of-service"
+								element={<TermsOfService />}
+							/>
+							<Route
+								path="/cookie-policy"
+								element={<CookiePolicy />}
+							/>
+							<Route path="/sitemap" element={<Sitemap />} />
+							<Route path="/property/:id" element={<PropertyDetails />} />
+
+							<Route path="/contact" element={<Contact />} />
 							<Route path="/faq" element={<FAQ />} />
+
 							<Route
 								path="services/corporate-stay"
 								element={<CorporateStay />}
@@ -79,6 +97,10 @@ function App() {
 							<Route
 								path="guest-services/housekeeping"
 								element={<Housekeeping />}
+							/>
+							<Route
+								path="services/service-apartments"
+								element={<ServiceApartments />}
 							/>
 							<Route
 								path="services/nri-housing"

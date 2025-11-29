@@ -335,7 +335,7 @@ export function Mumbai() {
                           <Button
                             size="lg"
                             variant="outline"
-                            className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold px-8"
+                            className="border-2 border-white text-black hover:bg-white hover:text-gray-900 font-semibold px-8"
                             onClick={() => navigate('/contact')}
                           >
                             <Phone className="mr-2 h-5 w-5" />
@@ -641,7 +641,7 @@ export function Mumbai() {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-red-600 font-semibold px-8 transition-all hover:scale-105"
+              className="border-2 border-white text-black hover:bg-white hover:text-red-600 font-semibold px-8 transition-all hover:scale-105"
               onClick={() => navigate('/contact')}
             >
               <Phone className="h-5 w-5 mr-2" />

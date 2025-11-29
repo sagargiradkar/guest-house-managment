@@ -46,14 +46,17 @@ import {
   Camera
 } from 'lucide-react';
 
+
 export function NRIHousing() {
   const navigate = useNavigate();
   const [contentLoaded, setContentLoaded] = useState(false);
+
 
   useEffect(() => {
     const timer = setTimeout(() => setContentLoaded(true), 300);
     return () => clearTimeout(timer);
   }, []);
+
 
   // Hero carousel images
   const heroImages = [
@@ -73,6 +76,7 @@ export function NRIHousing() {
       subtitle: 'Remote management for NRIs living abroad'
     }
   ];
+
 
   // NRI housing properties
   const properties = [
@@ -122,6 +126,7 @@ export function NRIHousing() {
     }
   ];
 
+
   // NRI-specific benefits
   const nriBenefits = [
     {
@@ -166,6 +171,7 @@ export function NRIHousing() {
     }
   ];
 
+
   // NRI Services
   const nriServices = [
     {
@@ -203,6 +209,7 @@ export function NRIHousing() {
     }
   ];
 
+
   // Payment options for NRIs
   const paymentOptions = [
     {
@@ -227,6 +234,7 @@ export function NRIHousing() {
     }
   ];
 
+
   // Countries with large NRI population
   const nriCountries = [
     { name: 'United States', flag: '🇺🇸', count: 520 },
@@ -238,6 +246,7 @@ export function NRIHousing() {
     { name: 'Saudi Arabia', flag: '🇸🇦', count: 180 },
     { name: 'Other Countries', flag: '🌍', count: 340 }
   ];
+
 
   // Process for NRIs
   const process = [
@@ -262,6 +271,7 @@ export function NRIHousing() {
       description: 'Complete paperwork remotely and start your stay'
     }
   ];
+
 
   // Popular cities for NRIs
   const popularCities = [
@@ -294,6 +304,7 @@ export function NRIHousing() {
       highlights: ['Central Location', 'Infrastructure', 'Education']
     }
   ];
+
 
   // Testimonials
   const testimonials = [
@@ -331,6 +342,7 @@ export function NRIHousing() {
     }
   ];
 
+
   return (
     <div className="min-h-screen -mt-28">
       {/* Hero Carousel Section */}
@@ -359,7 +371,7 @@ export function NRIHousing() {
                   <div className="absolute inset-0 flex items-center">
                     <div className="container mx-auto px-4">
                       <div className="max-w-2xl text-white animate-slide-up">
-                        <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-orange-600 text-white text-sm font-semibold rounded-full">
+                        <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-full">
                           <Globe2 className="h-4 w-4" />
                           NRI HOUSING SOLUTIONS
                         </div>
@@ -372,7 +384,7 @@ export function NRIHousing() {
                         <div className="flex flex-col sm:flex-row gap-4">
                           <Button
                             size="lg"
-                            className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-8 shadow-xl"
+                            className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 shadow-xl"
                             onClick={() => navigate('/search')}
                           >
                             Explore Properties
@@ -381,7 +393,7 @@ export function NRIHousing() {
                           <Button
                             size="lg"
                             variant="outline"
-                            className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold px-8"
+                            className="border-2 border-white text-black hover:bg-white hover:text-gray-900 font-semibold px-8"
                             onClick={() => navigate('/contact')}
                           >
                             Schedule Virtual Tour
@@ -398,6 +410,7 @@ export function NRIHousing() {
           <CarouselNext className="right-4" />
         </Carousel>
       </section>
+
 
       {/* Introduction Section */}
       <section className="py-16 bg-white">
@@ -416,13 +429,15 @@ export function NRIHousing() {
         </div>
       </section>
 
+
       {/* NRI Countries Stats */}
-      <section className="py-16 bg-gradient-to-b from-orange-50 to-white">
+      <section className="py-16 bg-gradient-to-b from-red-50 to-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-900">Serving NRIs Worldwide</h2>
             <p className="text-xl text-gray-600">Trusted by Indian professionals across the globe</p>
           </div>
+
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {nriCountries.map((country, index) => (
@@ -436,7 +451,7 @@ export function NRIHousing() {
                 <CardContent className="p-6">
                   <div className="text-5xl mb-3">{country.flag}</div>
                   <h3 className="font-semibold text-gray-900 mb-2">{country.name}</h3>
-                  <p className="text-2xl font-bold text-orange-600">{country.count}+</p>
+                  <p className="text-2xl font-bold text-red-600">{country.count}+</p>
                   <p className="text-xs text-gray-500">NRI Families</p>
                 </CardContent>
               </Card>
@@ -445,6 +460,7 @@ export function NRIHousing() {
         </div>
       </section>
 
+
       {/* Properties Carousel */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -452,6 +468,7 @@ export function NRIHousing() {
             <h2 className="text-4xl font-bold mb-4 text-gray-900">NRI-Friendly Properties</h2>
             <p className="text-xl text-gray-600">Curated homes for visiting, investing, or returning NRIs</p>
           </div>
+
 
           <Carousel
             opts={{
@@ -471,7 +488,7 @@ export function NRIHousing() {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute top-4 left-4">
-                        <Badge className="bg-orange-600 text-white">{property.type}</Badge>
+                        <Badge className="bg-red-600 text-white">{property.type}</Badge>
                       </div>
                       <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-1 rounded-full text-sm font-bold">
                         {property.price}
@@ -504,7 +521,7 @@ export function NRIHousing() {
                           {property.sqft} sqft
                         </span>
                       </div>
-                      <Button className="w-full bg-orange-600 hover:bg-orange-700" onClick={() => navigate('/search')}>
+                      <Button className="w-full bg-red-600 hover:bg-red-700" onClick={() => navigate('/search')}>
                         View Details
                       </Button>
                     </CardContent>
@@ -518,6 +535,7 @@ export function NRIHousing() {
         </div>
       </section>
 
+
       {/* NRI Benefits */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -527,6 +545,7 @@ export function NRIHousing() {
               Services designed specifically for Non-Resident Indians
             </p>
           </div>
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {nriBenefits.map((benefit, index) => (
@@ -538,7 +557,7 @@ export function NRIHousing() {
                 style={{ transitionDelay: `${index * 50}ms` }}
               >
                 <CardContent className="p-6 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 text-orange-600 mb-4">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 text-red-600 mb-4">
                     <benefit.icon className="h-8 w-8" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2 text-gray-900">{benefit.title}</h3>
@@ -550,6 +569,7 @@ export function NRIHousing() {
         </div>
       </section>
 
+
       {/* NRI Services by Category */}
       {nriServices.map((category, catIndex) => (
         <section key={catIndex} className={`py-16 ${catIndex % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
@@ -557,11 +577,12 @@ export function NRIHousing() {
             <div className={`text-center mb-12 transition-all duration-700 ${contentLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <div className="inline-flex items-center justify-center mb-4">
                 <div className={`w-16 h-16 rounded-full ${category.color} flex items-center justify-center`}>
-
+                  <category.icon className="h-8 w-8" />
                 </div>
               </div>
               <h2 className="text-4xl font-bold mb-4 text-gray-900">{category.category}</h2>
             </div>
+
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               {category.services.map((service, index) => (
@@ -586,6 +607,7 @@ export function NRIHousing() {
         </section>
       ))}
 
+
       {/* Payment Options */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -595,6 +617,7 @@ export function NRIHousing() {
               Multiple convenient ways to pay from anywhere in the world
             </p>
           </div>
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {paymentOptions.map((option, index) => (
@@ -618,6 +641,7 @@ export function NRIHousing() {
         </div>
       </section>
 
+
       {/* Popular Cities */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -625,6 +649,7 @@ export function NRIHousing() {
             <h2 className="text-4xl font-bold mb-4 text-gray-900">Popular Cities for NRIs</h2>
             <p className="text-xl text-gray-600">Top destinations for returning and investing NRIs</p>
           </div>
+
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {popularCities.map((location, index) => (
@@ -663,6 +688,7 @@ export function NRIHousing() {
         </div>
       </section>
 
+
       {/* Process */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -670,6 +696,7 @@ export function NRIHousing() {
             <h2 className="text-4xl font-bold mb-4 text-gray-900">How It Works for NRIs</h2>
             <p className="text-xl text-gray-600">Simple remote process from anywhere in the world</p>
           </div>
+
 
           <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {process.map((item, index) => (
@@ -681,11 +708,11 @@ export function NRIHousing() {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className="relative mb-6">
-                  <div className="w-20 h-20 rounded-full bg-orange-600 text-white flex items-center justify-center text-3xl font-bold mx-auto">
+                  <div className="w-20 h-20 rounded-full bg-red-600 text-white flex items-center justify-center text-3xl font-bold mx-auto">
                     {item.step}
                   </div>
                   {index < process.length - 1 && (
-                    <div className="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-orange-200" />
+                    <div className="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-red-200" />
                   )}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -696,6 +723,7 @@ export function NRIHousing() {
         </div>
       </section>
 
+
       {/* Testimonials */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -703,6 +731,7 @@ export function NRIHousing() {
             <h2 className="text-4xl font-bold mb-4 text-gray-900">What NRIs Say</h2>
             <p className="text-xl text-gray-600">Real experiences from Non-Resident Indians</p>
           </div>
+
 
           <Carousel
             opts={{
@@ -754,8 +783,9 @@ export function NRIHousing() {
         </div>
       </section>
 
+
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-600 to-orange-700">
+      <section className="py-20 bg-gradient-to-r from-red-600 to-red-700">
         <div className="container mx-auto px-4 text-center text-white">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to Find Your Home in India?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
@@ -764,7 +794,7 @@ export function NRIHousing() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button
               size="lg"
-              className="bg-white text-orange-600 hover:bg-gray-100 font-semibold px-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+              className="bg-white text-red-600 hover:bg-gray-100 font-semibold px-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105"
               onClick={() => navigate('/search')}
             >
               Browse Properties
@@ -772,7 +802,7 @@ export function NRIHousing() {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-orange-600 font-semibold px-8 transition-all hover:scale-105"
+              className="border-2 border-white text-black hover:bg-white hover:text-red-600 font-semibold px-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105"
               onClick={() => navigate('/contact')}
             >
               <Video className="h-5 w-5 mr-2" />
@@ -782,16 +812,17 @@ export function NRIHousing() {
         </div>
       </section>
 
+
       {/* Contact Bar */}
       <section className="py-8 bg-gray-900 text-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8">
-            <a href="tel:+918788800500" className="flex items-center gap-2 hover:text-orange-500 transition-colors">
-              <Phone className="h-5 w-5 text-orange-500" />
+            <a href="tel:+918788800500" className="flex items-center gap-2 hover:text-red-500 transition-colors">
+              <Phone className="h-5 w-5 text-red-500" />
               <span className="font-semibold">+91 8788 800 500</span>
             </a>
-            <a href="mailto:nri@corporatehousing.com" className="flex items-center gap-2 hover:text-orange-500 transition-colors">
-              <Mail className="h-5 w-5 text-orange-500" />
+            <a href="mailto:nri@corporatehousing.com" className="flex items-center gap-2 hover:text-red-500 transition-colors">
+              <Mail className="h-5 w-5 text-red-500" />
               <span className="font-semibold">nri@corporatehousing.com</span>
             </a>
           </div>

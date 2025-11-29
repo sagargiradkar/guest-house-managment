@@ -347,7 +347,7 @@ export function Support() {
                           <Button
                             size="lg"
                             variant="outline"
-                            className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold px-8"
+                            className="border-2 border-white text-black hover:bg-white hover:text-gray-900 font-semibold px-8"
                             onClick={() => window.open('https://wa.me/918788800500', '_blank')}
                           >
                             <MessageCircle className="mr-2 h-5 w-5" />
@@ -448,7 +448,7 @@ export function Support() {
             <div className={`text-center mb-12 transition-all duration-700 ${contentLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <div className="inline-flex items-center justify-center mb-4">
                 <div className={`w-16 h-16 rounded-full ${category.color} flex items-center justify-center`}>
-                 
+                  <category.icon className="h-8 w-8" />
                 </div>
               </div>
               <h2 className="text-4xl font-bold mb-4 text-gray-900">{category.category}</h2>
@@ -692,7 +692,7 @@ export function Support() {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-red-600 font-semibold px-8 transition-all hover:scale-105"
+              className="bg-white text-red-600 hover:bg-gray-100 font-semibold px-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105"
               onClick={() => window.location.href = 'tel:+918788800500'}
             >
               <Phone className="h-5 w-5 mr-2" />

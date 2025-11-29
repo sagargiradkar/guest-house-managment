@@ -379,7 +379,7 @@ export function Housekeeping() {
                           <Button
                             size="lg"
                             variant="outline"
-                            className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold px-8"
+                            className="border-2 border-white text-black hover:bg-white hover:text-gray-900 font-semibold px-8"
                             onClick={() => navigate('/contact')}
                           >
                             Request Service
