@@ -12,7 +12,7 @@ A comprehensive web application for managing guest houses and hotels that allows
 * Can search and filter properties
 * Must register/login to make bookings
 
-### 2.2 Guest (Authenticated User)
+### 2.2 Guest (Authenticated User) 
 
 * All unauthenticated guest capabilities
 * Can make room bookings
